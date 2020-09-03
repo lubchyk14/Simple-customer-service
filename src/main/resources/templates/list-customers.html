@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of customers</title>
+<!--    need to specify path to stylesheet file relatively to resources/static classpath -->
+    <link th:href="@{/css/style11.css}" rel="stylesheet">
+<!--    <style>-->
+<!--        #ssss{-->
+<!--            border: black;-->
+<!--        }-->
+<!--        .main{-->
+<!--            color: #666666;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+<div id="wrapper"  >
+    <div id="header">
+        <h2>Customer relationship Manager</h2>
+    </div>
+</div>
+<div id="container">
+
+    <div id="content">
+
+        <input type="button" value="Add Customer" onclick="window.location.href='showFormToAdd'"
+
+            class="add-button">
+
+        <table >
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            <tr th:each="customer : ${customers}" >
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.firstName}"></td>
+                <td th:text="${customer.lastName}"></td>
+                <td th:text="${customer.email}"></td>
+                <td><a th:href="@{/customer/showFormForUpdate/{id}(id=${customer.id})}" onclick="alert('Updating')">Update</a>
+                    | <a th:href="@{/customer/delete/{id}(id=${customer.id})}"
+                         onclick="if (!(confirm('Are you sure to delete ?'))) return false;"  >Delete</a>
+<!--                    onclick - javascript prompt to show the pop-up window and confirm the action -->
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+<!--<ul th:each="customer : ${customers}">-->
+<!--    <li th:text="${customer}"></li>-->
+<!--</ul>-->
+<!--    <p th:each="customer : ${customers}" th:text="${customer}" />-->
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new customer</title>
+    <link type="text/css" rel="stylesheet"
+          th:href="@{/css/style11.css}"/>
+
+    <link type="text/css" rel="stylesheet"
+          th:href="@{/css/add-customer-style.css}"/>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h2>Customer Relationship Manager</h2>
+        </div>
+    </div>
+
+    <div id="container">
+        <h3>Save Customer to DB</h3>
+
+        <form th:action="@{/customer/save}" th:object="${customer}"  method="post" >
+
+<!--            Need to associate this data with customer id (to prevent creation of new customer)-->
+            <input type="hidden" th:field="*{id}">
+
+
+            <table>
+                <tbody>
+                <tr>
+                    <td><label>First name</label></td>
+                    <td><input type="text" th:field="*{firstName}"></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name</label></td>
+                    <td><input type="text" th:field="*{lastName}"></td>
+                </tr>
+                <tr>
+                    <td><label>E-mail</label></td>
+                    <td><input type="text" th:field="*{email}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Save" class="save"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        <div style="clear: both">
+            <p>
+                <a href="/customer/list">Back to customer list</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
